@@ -1,46 +1,57 @@
 @import "container.css";
 
 .card {
-  --base-hue: 310deg; /* Hot pink */
-  --distance: 90deg;
+  --base-hue: 320deg;
+  --distance: 12deg;
 
-  --color-a: hsl( var(--base-hue), 100%, 50% );
-  --color-b: hsl( calc( var(--base-hue) + var( --distance ) ), 100%, 50% );
-  --color-c: hsl( calc( var(--base-hue) + ( var( --distance ) * 2 ) ), 100%, 50% );
-  --color-d: hsl( calc( var(--base-hue) + ( var( --distance ) * 3 ) ), 100%, 50% );
+  --color-a: hsl(var(--base-hue), 100%, 50%);
+  --color-a-lt: hsl(var(--base-hue), 100%, 80%);
+  --color-a-dk: hsl(var(--base-hue), 100%, 20%);
+  --color-c: hsl(calc(var(--base-hue) + (var(--distance) * 2)), 100%, 50%);
+  --color-d: hsl(calc(var(--base-hue) + (var(--distance) * 3)), 100%, 50%);
+  --color-e: hsl(calc(var(--base-hue) + (var(--distance) * 4)), 100%, 50%);
+  --color-f: hsl(calc(var(--base-hue) + (var(--distance) * 5)), 100%, 50%);
+  --color-g: hsl(calc(var(--base-hue) + (var(--distance) * 6)), 100%, 50%);
 
-background-color: #120d2b;
-padding: 4rem;
-border-radius: .5rem;
+  background: linear-gradient(
+      180deg,
+      var(--color-a-lt),
+      var(--color-a),
+      var(--color-a-dk)
+    )
+    0 0 / 100% 100%;
+  padding: 2rem;
+  border-radius: 0.5rem;
 }
 
 .heading {
-color: var(--color-a);
+  color: var(--color-a);
 }
 
-
+.item--create svg {
+  color: var(--color-a-dk);
+}
 
 .item--create {
-color: #554242;
+  color: var(--color-c);
+}
+
+.item--post svg {
+  color: var(--color-d);
 }
 
 .item--post {
-color: #330000;
+  color: var(--color-e);
+}
+
+.item--inspire svg {
+  color: var(--color-f);
 }
 
 .item--inspire {
-color: #330000;
-}
-
-.item--inspire span {
-color: green;
-}
-
-.card svg {
-color: red;
+  color: var(--color-g);
 }
 
 button {
-color: red;
+  color: red;
 }
-
