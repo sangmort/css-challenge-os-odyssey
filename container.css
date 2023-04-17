@@ -1,0 +1,21 @@
+body {
+  background-color: #333;
+}
+
+.simulate-uiverse {
+  color: #fff;
+  display: flex;
+  justify-content: stretch;
+  position: relative;
+  max-width: 99%;
+  min-height: 850px;
+  height: 100%;
+  max-height: 850px;
+  resize: vertical;
+  border-radius: 20px;
+  padding: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 88vw;
+  z-index: 1;
+}
