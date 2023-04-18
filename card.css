@@ -36,62 +36,115 @@
     var(--darkness)
   );
 
-  --background-e: linear-gradient(
-      180deg,
-      var(--color-a),
-      var(--color-b),
-      var(--color-c),
-      var(--color-d),
-      var(--color-e)
-    )
-    0 0 / 100% 100%;
-  border-radius: 50px;
-  background: var(--color-c-dk);
-  box-shadow: 5px 5px 45px var(--color-e), 10px 10px 45px var(--color-c),
-    -5px -5px 45px var(--color-a);
-  padding: 2rem;
+  --color-bright: hsl(
+    calc(var(--base-hue) + (var(--distance) * 5)),
+    100%,
+    100%
+  );
+  --color-dark: hsl(calc(var(--base-hue) + (var(--distance) * 5)), 100%, 10%);
 
-  /* box-shadow: 24vw 9vh 1px 0px #fff, 12vw -24vh 0px 1px #fff,
-    -45vw -22vh 0px 0px #fff, -37vw -40vh 0px 1px #fff, 29vw 19vh 0px 1px #fff,
-    4vw -8vh 0px 1px #fff, -5vw 21vh 1px 1px #fff, -27vw 26vh 1px 1px #fff,
-    -47vw -3vh 1px 1px #fff, -28vw -30vh 0px 1px #fff, -43vw -27vh 0px 1px #fff,
-    4vw 22vh 1px 1px #fff, 36vw 23vh 0px 0px #fff, -21vw 24vh 1px 1px #fff,
-    -16vw 2vh 1px 0px #fff, -16vw -6vh 0px 0px #fff, 5vw 26vh 0px 0px #fff,
-    -34vw 41vh 0px 0px #fff, 1vw 42vh 1px 1px #fff, 11vw -13vh 1px 1px #fff,
-    48vw -8vh 1px 0px #fff, 22vw -15vh 0px 0px #fff, 45vw 49vh 0px 0px #fff,
-    43vw -27vh 1px 1px #fff, 20vw -2vh 0px 0px #fff, 8vw 22vh 0px 1px #fff,
-    39vw 48vh 1px 1px #fff, -21vw -11vh 0px 1px #fff, -40vw 45vh 0px 1px #fff,
-    11vw -30vh 1px 0px #fff, 26vw 30vh 1px 0px #fff, 45vw -29vh 0px 1px #fff,
-    -2vw 18vh 0px 0px #fff, -29vw -45vh 1px 0px #fff, -7vw -27vh 1px 1px #fff,
-    42vw 24vh 0px 0px #fff, 45vw -48vh 1px 0px #fff, -36vw -18vh 0px 0px #fff,
-    -44vw 13vh 0px 1px #fff, 36vw 16vh 0px 1px #fff, 40vw 24vh 0px 0px #fff,
-    18vw 11vh 0px 0px #fff, -15vw -23vh 1px 0px #fff, -24vw 48vh 0px 1px #fff,
-    27vw -45vh 1px 0px #fff, -2vw -24vh 0px 1px #fff, -15vw -28vh 0px 0px #fff,
-    -43vw 13vh 1px 0px #fff, 7vw 27vh 1px 0px #fff, 47vw 5vh 0px 0px #fff,
-    -45vw 15vh 1px 1px #fff, -5vw -28vh 0px 1px #fff, 38vw 25vh 1px 1px #fff,
-    -39vw -1vh 1px 0px #fff, 5vw 0vh 1px 0px #fff, 49vw 13vh 0px 0px #fff,
-    48vw 10vh 0px 1px #fff, 19vw -28vh 0px 0px #fff, 4vw 7vh 0px 0px #fff,
-    21vw 21vh 1px 1px #fff, -15vw -15vh 0px 1px #fff, -6vw -42vh 1px 0px #fff,
-    -15vw 48vh 1px 1px #fff, -23vw 25vh 1px 1px #fff, -48vw 25vh 0px 1px #fff,
-    -31vw -19vh 0px 1px #fff, 4vw 37vh 1px 1px #fff, -43vw 28vh 0px 0px #fff,
-    3vw -25vh 0px 1px #fff, -39vw 14vh 0px 1px #fff, -40vw 31vh 0px 1px #fff,
-    35vw -36vh 1px 1px #fff, 16vw 49vh 0px 0px #fff, 6vw 39vh 0px 0px #fff,
-    3vw -35vh 0px 1px #fff, -44vw -2vh 1px 0px #fff, -6vw 21vh 1px 0px #fff,
-    48vw 9vh 1px 1px #fff, -43vw 30vh 1px 1px #fff, 29vw -12vh 1px 1px #fff,
-    -48vw 13vh 1px 0px #fff, -42vw 32vh 1px 1px #fff, 34vw 15vh 1px 1px #fff,
-    29vw -37vh 1px 1px #fff, 28vw 2vh 0px 0px #fff;
-  background-image: var(--stars-bg);
-  animation: zoom 16s alternate infinite; */
+  --bg-space: radial-gradient(circle at top left, var(--color-c), transparent),
+    radial-gradient(circle at bottom, var(--color-a), transparent 60%),
+    radial-gradient(circle at bottom right, var(--color-e), transparent);
+
+  --stars: radial-gradient(
+      circle at 0% 10%,
+      var(--color-bright) 0.1rem,
+      transparent 0px
+    ),
+    radial-gradient(circle at 5% 10%, var(--color-bright) 1px, transparent 1px),
+    radial-gradient(circle at 10% 5%, var(--color-bright) 1px, transparent 2px),
+    radial-gradient(circle at 35% 5%, var(--color-bright) 1px, transparent 1px),
+    radial-gradient(circle at 15% 25%, var(--color-bright) 1px, transparent 0px),
+    radial-gradient(circle at 25% 17%, var(--color-bright) 1px, transparent 1px),
+    radial-gradient(circle at 24% 13%, var(--color-bright) 1px, transparent 2px);
+
+  background-image: var(--bg-space);
+  background-size: 200% 200%;
+  box-shadow: 0.05rem 0.05rem 1.5rem var(--color-a),
+    -0.05rem -0.05rem 2rem var(--color-e);
+  padding: 4rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 0.1rem solid hsl(var(--base-hue), 100%, 50%);
+  position: relative;
+  overflow: hidden;
 }
 
-/* @keyframes zoom {
-  0% {
-    transform: scale(1);
+.card::before {
+  /* add pseudo-element */
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: var(--stars); /* add only the space-gradient */
+  background-size: 100% 100%;
+  animation-name: space;
+  animation-duration: 200s; /* faster speed */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  overflow: hidden;
+  z-index: -1;
+}
+
+@keyframes space {
+  from {
+    transform: translateY(0px);
   }
-  100% {
-    transform: scale(1.5);
+  to {
+    transform: translateY(-2000px);
   }
-} */
+}
+
+.card::after {
+  /* add pseudo-element */
+  content: " ";
+  position: absolute;
+
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  background-size: 10% 10%;
+  box-shadow: 2px 8px #fff, 11px 12px #fff, 1800px 1214px #fff,
+    78px 57px #fff, 17px 18px #fff, 1656px 84px #fff, 71px 1111px #fff,
+    156px 139px #fff, 1345px 920px #fff, 386px 119px #fff, 131px 164px #fff,
+    101px 12px #fff, 1598px 554px #fff, 1612px 1718px #fff, 1923px 1065px #fff,
+    970px 1056px #fff, 258px 612px #fff, 1500px 1244px #fff, 975px 936px #fff,
+    490px 1615px #fff, 616px 114px #fff, 599px 1115px #fff, 187px 1321px #fff,
+    1418px 412px #fff, 218px 1660px #fff, 1330px 1561px #fff, 51px 1717px #fff,
+    1232px 1466px #fff, 510px 628px #fff, 1129px 722px #fff, 13px 11px #fff,
+    903px 718px #fff, 762px 1388px #fff, 78px 170px #fff, 1937px 453px #fff,
+    927px 1979px #fff, 1205px 21px #fff, 612px 843px #fff, 1835px 956px #fff,
+    1363px 13px #fff, 739px 7px #fff, 800px 1743px #fff, 775px 893px #fff,
+    991px 1731px #fff, 312px 1065px #fff, 67px 93px #fff, 697px 1204px #fff,
+    1770px 705px #fff, 72px 93px #fff, 475px 1528px #fff, 1179px 1525px #fff,
+    1616px 384px #fff, 966px 1732px #fff, 1168px 137px #fff, 1309px 1132px #fff,
+    1990px 1578px #fff, 25px 1165px #fff, 810px 1471px #fff, 96px 1474px #fff,
+    1361px 1897px #fff, 494px 550px #fff, 270px 1914px #fff, 963px 1997px #fff,
+    1985px 643px #fff, 645px 665px #fff, 439px 531px #fff, 1482px 130px #fff,
+    420px 184px #fff, 1011px 1233px #fff, 257px 1583px #fff, 36px 1750px #fff,
+    907px 707px #fff, 773px 632px #fff, 1903px 130px #fff, 1532px 780px #fff,
+    1804px 1354px #fff, 1130px 530px #fff, 283px 1354px #fff, 285px 1451px #fff,
+    1393px 1278px #fff, 383px 115px #fff, 1824px 342px #fff, 17px 1899px #fff,
+    1711px 167px #fff, 37px 1258px #fff, 1892px 1669px #fff, 126px 946px #fff,
+    389px 420px #fff, 967px 1938px #fff, 1939px 76px #fff, 1305px 879px #fff,
+    689px 1667px #fff, 1007px 982px #fff, 51px 1099px #fff, 507px 588px #fff,
+    19px 357px #fff, 1590px 1851px #fff, 1947px 212px #fff, 708px 635px #fff,
+    481px 1844px #fff;
+  animation-name: space2;
+  animation-duration: 2s; /* faster speed */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  overflow: hidden;
+}
+
+@keyframes space2 {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(20rem);
+  }
+}
 
 .heading {
   color: var(--color-a);
