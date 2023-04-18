@@ -2,12 +2,17 @@
 
 .card {
   --base-hue: 320deg;
-  --distance: 12deg;
+  --distance: -12deg;
 
   --color-a: hsl(var(--base-hue), 100%, 50%);
-  --color-a-lt: hsl(var(--base-hue), 100%, 80%);
-  --color-a-dk: hsl(var(--base-hue), 100%, 20%);
-  --color-c: hsl(calc(var(--base-hue) + (var(--distance) * 2)), 100%, 50%);
+  --color-a-dk: hsl(var(--base-hue), 100%, 30%);
+
+  --color-b: hsl(calc(var(--base-hue) + (var(--distance) * 2)), 100%, 50%);
+  --color-b-dk: hsl(calc(var(--base-hue) + (var(--distance) * 2)), 100%, 30%);
+
+  --color-c: hsl(calc(var(--base-hue) + (var(--distance) * 3)), 100%, 50%);
+  --color-c-dk: hsl(calc(var(--base-hue) + (var(--distance) * 3)), 100%, 30%);
+
   --color-d: hsl(calc(var(--base-hue) + (var(--distance) * 3)), 100%, 50%);
   --color-e: hsl(calc(var(--base-hue) + (var(--distance) * 4)), 100%, 50%);
   --color-f: hsl(calc(var(--base-hue) + (var(--distance) * 5)), 100%, 50%);
@@ -15,9 +20,9 @@
 
   background: linear-gradient(
       180deg,
-      var(--color-a-lt),
-      var(--color-a),
-      var(--color-a-dk)
+      var(--color-a-dk),
+      var(--color-b-dk),
+      var(--color-c-dk)
     )
     0 0 / 100% 100%;
   padding: 2rem;
@@ -29,7 +34,7 @@
 }
 
 .item--create svg {
-  color: var(--color-a-dk);
+  color: var(--color-c-lt);
 }
 
 .item--create {
