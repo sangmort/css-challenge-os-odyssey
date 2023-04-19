@@ -747,17 +747,17 @@
   --color-stars-a: hsl(
     calc(var(--base-hue) + (var(--distance) * 1)),
     100%,
-    80%
+    90%
   );
   --color-stars-b: hsl(
-    calc(var(--base-hue) + (var(--distance) * 3)),
+    calc(var(--base-hue) + (var(--distance) * 2)),
     100%,
     90%
   );
   --color-stars-c: hsl(
-    calc(var(--base-hue) + (var(--distance) * 3.5)),
+    calc(var(--base-hue) + (var(--distance) * 3)),
     100%,
-    70%
+    90%
   );
 
   --bg-space: radial-gradient(
