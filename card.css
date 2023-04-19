@@ -1,6 +1,7 @@
 @import "container.css";
 
 .card {
+  /* Stars */
   --stars-1: -0.2rem 3.96rem var(--color-stars-a),
     -0.12rem -3.32rem var(--color-stars-a),
     -0.12rem 2.41rem var(--color-stars-a),
@@ -708,7 +709,7 @@
   /* Color - Variables */
   --base-hue: 260deg;
   --distance: 20deg;
-  --darkness: 15%;
+  --darkness: 10%;
 
   /* Colors - Vibrant */
   --color-a: hsl(var(--base-hue), 100%, 50%);
@@ -758,27 +759,33 @@
     20%
   );
 
+  /* Card GradientBackground */
   --bg-space: radial-gradient(
     circle farthest-corner at top right,
+    var(--color-dark),
+    var(--color-a-dk),
     var(--color-dark),
     var(--color-a-dk),
     var(--color-dark)
   );
 
+  /* Card Styles */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-image: var(--bg-space);
-  background-size: 200% 200%;
-  box-shadow: var(--color-a) 0 3.4rem 3.4rem, var(--color-dark) 0 -0.8rem 1.9rem,
-    var(--color-c) 0 0.3rem 0.4rem, var(--color-d) 0 0.8rem 0.8rem,
-    var(--color-b) 0 -0.2rem 0.3rem;
-  height: 13.25rem;
-  width: 9.75rem;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  border: 0.1rem solid hsl(var(--base-hue), 100%, 50%);
-  animation: bg-gradient 8s ease infinite;
+  background-size: 300% 210%;
+  box-shadow: var(--color-a) 0 3.4em 3.4em, var(--color-dark) 0 -0.8em 1.9em,
+    var(--color-c) 0 0.3em 0.4em, var(--color-d) 0 0.8em 0.8em,
+    var(--color-b) 0 -0.2em 0.3em;
+  height: 400px;
+  width: 280px;
+  padding: 1.75em;
+  border-radius: 0.75em;
+  border: 0.05em solid var(--color-c);
+  animation: bg-gradient 11s ease-out infinite;
   position: relative;
   overflow: hidden;
 }
@@ -787,7 +794,7 @@
 .card::after {
   content: " ";
   position: absolute;
-  top: 60%;
+  top: 70%;
   left: 40%;
   width: 0.05rem;
   height: 0.05rem;
@@ -822,13 +829,13 @@
 }
 
 /* Galaxy Stars - Flickering, Non-Rotating */
-.heading::after {
+.content::after {
   content: " ";
   position: absolute;
   top: 100%;
   left: 50%;
-  width: 0.06rem;
-  height: 0.06rem;
+  width: 0.06em;
+  height: 0.06em;
   transform: rotate(45deg);
   background: transparent;
   background-size: 10% 10%;
@@ -840,52 +847,115 @@
   overflow: hidden;
 }
 
+/* Header Text */
 .heading {
-  font-size: 1.5rem;
+  font-size: 1.05em;
+  letter-spacing: 0.05em;
   text-align: center;
-  color: var(color-a);
+  text-transform: uppercase;
+  color: var(--color-bright);
   z-index: 1;
+  margin-bottom: 0.5rem;
 }
 
 .heading span {
-  color: var(--color-bright);
+  text-align: justify;
+  font-size: 3em;
+  color: var(--color-c);
   font-weight: 700;
+  height: 130%;
+  animation-name: galaxy;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  overflow: hidden;
+}
+
+.item {
+  font-size: 1.75em;
+  text-transform: uppercase;
+  margin-bottom: 0.75em;
 }
 
 .item--create svg {
-  color: var(--color-c);
+  color: var(--color-a);
   z-index: 1;
 }
 
 .item--create {
-  color: var(--color-c);
+  color: var(--color-a);
   z-index: 1;
 }
 
 .item--post svg {
-  color: var(--color-d);
+  color: var(--color-b);
   z-index: 1;
 }
 
 .item--post {
-  color: var(--color-c);
+  color: var(--color-b);
   z-index: 1;
 }
 
 .item--inspire svg {
-  color: var(--color-a);
+  color: var(--color-c);
   z-index: 1;
 }
 
 .item--inspire {
-  color: var(--color-a);
+  color: var(--color-c);
 }
 
+/* Button */
 button {
-  color: red;
+  position: relative;
+  font-size: 1em;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1em 2.5em;
+  display: inline-block;
+  border-radius: 6em;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+  font-weight: 500;
+  color: black;
+  background-color: var(--color-a);
   z-index: 1;
 }
 
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+button::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+button::after {
+  background-color: #fff;
+}
+
+button:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
 /*animations*/
 @keyframes space {
   from {
@@ -918,14 +988,27 @@ button {
   }
 }
 
+@keyframes galaxy {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0.5;
+  }
+}
+
 @keyframes bg-gradient {
   0% {
-    background-position: 0% 25%;
+    background-position: 0% 50%;
   }
   50% {
     background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 25%;
+    background-position: 0% 50%;
   }
 }
