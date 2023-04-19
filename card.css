@@ -736,7 +736,7 @@
   );
 
   /* Colors - Neutral */
-  --color-bright: hsl(calc(var(--base-hue) + (var(--distance) * 1)), 100%, 90%);
+  --color-bright: hsl(calc(var(--base-hue) + (var(--distance) * 1)), 100%, 99%);
   --color-dark: hsl(calc(var(--base-hue) + (var(--distance) * 1)), 100%, 1%);
 
   /* Colors - Stars */
@@ -761,13 +761,23 @@
 
   /* Card GradientBackground */
   --bg-space: radial-gradient(
-    circle farthest-corner at top right,
+    circle at 0% 100%,
     var(--color-dark),
+    20%,
     var(--color-a-dk),
     var(--color-dark),
     var(--color-a-dk),
     var(--color-dark)
   );
+
+  /* radial-gradient(
+    circle farthest-corner at center center,
+    var(--color-dark), 20%,
+    var(--color-a-dk), 
+    var(--color-dark), 60%, 
+    var(--color-a-dk), 
+    var(--color-dark)
+  ); */
 
   /* Card Styles */
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
@@ -785,7 +795,7 @@
   padding: 1.75em;
   border-radius: 0.75em;
   border: 0.05em solid var(--color-c);
-  animation: bg-gradient 11s ease-out infinite;
+  animation: bg-gradient 3s linear infinite;
   position: relative;
   overflow: hidden;
 }
@@ -849,23 +859,30 @@
 
 /* Header Text */
 .heading {
-  font-size: 1.05em;
+  font-size: 1em;
   letter-spacing: 0.05em;
   text-align: center;
   text-transform: uppercase;
-  color: var(--color-bright);
+  color: var(--color-a);
   z-index: 1;
   margin-bottom: 0.5rem;
+  -webkit-text-stroke-width: 0.05rem;
+  -webkit-text-stroke-color: var(--color-bright);
 }
 
 .heading span {
   text-align: justify;
-  font-size: 3em;
+  font-size: 3rem;
   color: var(--color-c);
   font-weight: 700;
-  height: 130%;
+
+  background: -webkit-linear-gradient(var(--color-a), var(--color-d));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 0.05rem;
+  -webkit-text-stroke-color: var(--color-bright);
   animation-name: galaxy;
-  animation-duration: 10s;
+  animation-duration: 12s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   overflow: hidden;
@@ -915,24 +932,24 @@ button {
   text-decoration: none;
   padding: 1em 2.5em;
   display: inline-block;
-  border-radius: 6em;
+  border-radius: 1.75rem;
   transition: all 0.2s;
   border: none;
   font-family: inherit;
   font-weight: 500;
-  color: black;
+  color: var(--color-dark);
   background-color: var(--color-a);
   z-index: 1;
 }
 
 button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px var(--color-a);
 }
 
 button:active {
   transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.1rem 0.25rem var(--color-a);
 }
 
 button::after {
@@ -940,7 +957,7 @@ button::after {
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 1.75rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -949,7 +966,7 @@ button::after {
 }
 
 button::after {
-  background-color: #fff;
+  background-color: var(--color-bright);
 }
 
 button:hover::after {
@@ -957,6 +974,8 @@ button:hover::after {
   opacity: 0;
 }
 /*animations*/
+
+/* Stars */
 @keyframes space {
   from {
     transform: rotate(0deg);
@@ -988,27 +1007,33 @@ button:hover::after {
   }
 }
 
+/* Galaxy Span Text */
 @keyframes galaxy {
   0%,
   50%,
   100% {
     opacity: 1;
   }
-
+  10%,
   25%,
   75% {
-    opacity: 0.5;
+    opacity: 0.75;
   }
 }
 
+/* Card Gradient Background */
 @keyframes bg-gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%,
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 100%;
+  }
+
+  25%,
+  75% {
+    background-position: 50% 50%;
+  }
+
+  50% {
+    background-position: 100% 0%;
   }
 }
