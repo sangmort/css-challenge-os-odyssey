@@ -711,8 +711,8 @@
     1.8rem 7.6rem var(--color-stars-c), 14.2rem 14.5rem var(--color-stars-c);
 
   /* Color - Variables */
-  --base-hue: 350deg;
-  --distance: -15deg;
+  --base-hue: 260deg;
+  --distance: 20deg;
   --darkness: 15%;
 
   /* Colors - Vibrant */
@@ -740,21 +740,31 @@
   );
 
   /* Colors - Neutral */
-  --color-bright: hsl(calc(var(--base-hue) + (var(--distance) * 3)), 50%, 90%);
-  --color-dark: hsl(calc(var(--base-hue) + (var(--distance) * 5)), 50%, 10%);
+  --color-bright: hsl(calc(var(--base-hue) + (var(--distance) * 1)), 100%, 90%);
+  --color-dark: hsl(calc(var(--base-hue) + (var(--distance) * 1)), 100%, 1%);
 
   /* Colors - Stars */
-  --color-stars-a: hsl(calc(var(--base-hue) + (var(--distance) * 2)), 80%, 70%);
-  --color-stars-b: var(--color-d);
-  --color-stars-c: var(--color-c);
+  --color-stars-a: hsl(
+    calc(var(--base-hue) + (var(--distance) * 1)),
+    100%,
+    80%
+  );
+  --color-stars-b: hsl(
+    calc(var(--base-hue) + (var(--distance) * 3)),
+    100%,
+    90%
+  );
+  --color-stars-c: hsl(
+    calc(var(--base-hue) + (var(--distance) * 3.5)),
+    100%,
+    70%
+  );
 
   --bg-space: radial-gradient(
     circle farthest-corner at top right,
+    var(--color-dark),
     var(--color-a-dk),
-    var(--color-b-dk) 4%,
-    var(--color-c-dk) 50%,
-    var(--color-d-dk) 75%,
-    var(--color-dark) 100%
+    var(--color-dark)
   );
 
   display: flex;
@@ -762,14 +772,13 @@
   align-items: center;
   background-image: var(--bg-space);
   background-size: 200% 200%;
-  animation: gradient 10ms ease infinite;
-  box-shadow: var(--color-a) 0px 54px 55px, var(--color-b) 0px -12px 30px,
+  box-shadow: var(--color-a) 0px 54px 55px, var(--color-dark) 0px -12px 30px,
     var(--color-c) 0px 4px 6px, var(--color-d) 0px 12px 13px,
-    var(--color-dark) 0px -3px 5px;
+    var(--color-b) 0px -3px 5px;
   padding: 5rem 1.5rem;
   border-radius: 0.75rem;
   border: 0.1rem solid hsl(var(--base-hue), 100%, 50%);
-  animation: gradient 12s ease infinite;
+  animation: bg-gradient 8s ease infinite;
   position: relative;
   overflow: hidden;
 }
@@ -906,7 +915,7 @@ button {
   }
 }
 
-@keyframes gradient {
+@keyframes bg-gradient {
   0% {
     background-position: 0% 25%;
   }
