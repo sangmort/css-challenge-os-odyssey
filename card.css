@@ -3,7 +3,7 @@
 .card {
   --base-hue: 210deg;
   --distance: 15deg;
-  --darkness: 15%;
+  --darkness: 10%;
 
   --color-a: hsl(var(--base-hue), 100%, 50%);
   --color-a-dk: hsl(var(--base-hue), 100%, var(--darkness));
@@ -43,9 +43,13 @@
   );
   --color-dark: hsl(calc(var(--base-hue) + (var(--distance) * 5)), 100%, 10%);
 
-  --bg-space: radial-gradient(circle at top left, var(--color-c), transparent),
-    radial-gradient(circle at bottom, var(--color-a), transparent 60%),
-    radial-gradient(circle at bottom right, var(--color-e), transparent);
+  --bg-space: radial-gradient(
+      circle at top left,
+      var(--color-c),
+      transparent 10%
+    ),
+    radial-gradient(circle at bottom, var(--color-a), transparent 70%),
+    radial-gradient(circle at bottom right, var(--color-e-dk), transparent);
 
   --stars: radial-gradient(
       circle at 0% 10%,
@@ -68,23 +72,9 @@
   border: 0.1rem solid hsl(var(--base-hue), 100%, 50%);
   position: relative;
   overflow: hidden;
+  z-index: -10;
 }
 
-.card::before {
-  /* add pseudo-element */
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-image: var(--stars); /* add only the space-gradient */
-  background-size: 100% 100%;
-  animation-name: space;
-  animation-duration: 200s; /* faster speed */
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  overflow: hidden;
-  z-index: -1;
-}
 
 @keyframes space {
   from {
@@ -96,42 +86,150 @@
 }
 
 .card::after {
-  /* add pseudo-element */
   content: " ";
   position: absolute;
-
-  width: 3px;
-  height: 3px;
+  top: 100%;
+  left: 50%;
+  width: 0.05rem;
+  height: 0.05rem;
+  border-radius: 1rem;
   background: transparent;
   background-size: 10% 10%;
-  box-shadow: 2px 8px #fff, 11px 12px #fff, 1800px 1214px #fff,
-    78px 57px #fff, 17px 18px #fff, 1656px 84px #fff, 71px 1111px #fff,
-    156px 139px #fff, 1345px 920px #fff, 386px 119px #fff, 131px 164px #fff,
-    101px 12px #fff, 1598px 554px #fff, 1612px 1718px #fff, 1923px 1065px #fff,
-    970px 1056px #fff, 258px 612px #fff, 1500px 1244px #fff, 975px 936px #fff,
-    490px 1615px #fff, 616px 114px #fff, 599px 1115px #fff, 187px 1321px #fff,
-    1418px 412px #fff, 218px 1660px #fff, 1330px 1561px #fff, 51px 1717px #fff,
-    1232px 1466px #fff, 510px 628px #fff, 1129px 722px #fff, 13px 11px #fff,
-    903px 718px #fff, 762px 1388px #fff, 78px 170px #fff, 1937px 453px #fff,
-    927px 1979px #fff, 1205px 21px #fff, 612px 843px #fff, 1835px 956px #fff,
-    1363px 13px #fff, 739px 7px #fff, 800px 1743px #fff, 775px 893px #fff,
-    991px 1731px #fff, 312px 1065px #fff, 67px 93px #fff, 697px 1204px #fff,
-    1770px 705px #fff, 72px 93px #fff, 475px 1528px #fff, 1179px 1525px #fff,
-    1616px 384px #fff, 966px 1732px #fff, 1168px 137px #fff, 1309px 1132px #fff,
-    1990px 1578px #fff, 25px 1165px #fff, 810px 1471px #fff, 96px 1474px #fff,
-    1361px 1897px #fff, 494px 550px #fff, 270px 1914px #fff, 963px 1997px #fff,
-    1985px 643px #fff, 645px 665px #fff, 439px 531px #fff, 1482px 130px #fff,
-    420px 184px #fff, 1011px 1233px #fff, 257px 1583px #fff, 36px 1750px #fff,
-    907px 707px #fff, 773px 632px #fff, 1903px 130px #fff, 1532px 780px #fff,
-    1804px 1354px #fff, 1130px 530px #fff, 283px 1354px #fff, 285px 1451px #fff,
-    1393px 1278px #fff, 383px 115px #fff, 1824px 342px #fff, 17px 1899px #fff,
-    1711px 167px #fff, 37px 1258px #fff, 1892px 1669px #fff, 126px 946px #fff,
-    389px 420px #fff, 967px 1938px #fff, 1939px 76px #fff, 1305px 879px #fff,
-    689px 1667px #fff, 1007px 982px #fff, 51px 1099px #fff, 507px 588px #fff,
-    19px 357px #fff, 1590px 1851px #fff, 1947px 212px #fff, 708px 635px #fff,
-    481px 1844px #fff;
+  box-shadow: -0.02rem 3.96rem #fff, -0.12rem -3.32rem #fff,
+    -0.12rem 2.41rem #fff, -0.15rem -0.53rem #fff, -0.15rem 1.12rem #fff,
+    -0.22rem 5.79rem #fff, -0.23rem -0.74rem #fff, -0.25rem -2rem #fff,
+    -0.26rem -0.72rem #fff, -0.29rem -0.94rem #fff, -0.39rem 0.13rem #fff,
+    -0.33rem -2.43rem #fff, -0.35rem -2rem #fff, -0.48rem 0.77rem #fff,
+    -0.46rem -0.73rem #fff, -0.47rem 1.46rem #fff, -0.61rem -2rem #fff,
+    -0.55rem -0.07rem #fff, -0.58rem 0.41rem #fff, -0.5rem -4rem #fff,
+    -0.61rem -3rem #fff, -0.65rem 2.44rem #fff, -0.65rem 3.44rem #fff,
+    -0.72rem -0.69rem #fff, -0.82rem 5.15rem #fff, -0.82rem 6.15rem #fff,
+    -0.86rem -3.35rem #fff, -0.87rem 2.84rem #fff, -0.89rem 1.35rem #fff,
+    -0.99rem -2.22rem #fff, -0.98rem -0.69rem #fff, -0.98rem -1.69rem #fff,
+    -0.9rem 3.38rem #fff, -1.11rem 1.85rem #fff, -1.15rem -1.73rem #fff,
+    -1.25rem -3rem #fff, -1.26rem -1.72rem #fff, -1.35rem -3rem #fff,
+    -1.29rem -1.94rem #fff, -1.39rem -0.87rem #fff, -1.46rem -0.74rem #fff,
+    -1.39rem 0.22rem #fff, -1.47rem 0.46rem #fff, -1.48rem -0.23rem #fff,
+    -1.55rem -1.07rem #fff, -1.56rem -1.11rem #fff, -1.57rem 1.71rem #fff,
+    -1.58rem -0.59rem #fff, -1.59rem 4.32rem #fff, -1.61rem -4rem #fff,
+    -1.65rem 1.44rem #fff, -1.64rem -0.78rem #fff, -1.78rem 3.79rem #fff,
+    -1.82rem 4.15rem #fff, -1.86rem -4.35rem #fff, -1.87rem 1.84rem #fff,
+    -1.89rem 0.35rem #fff, -1.91rem 1.32rem #fff, -1.98rem -2.69rem #fff,
+    -1.9rem 2.38rem #fff, -1rem -1rem #fff, -1rem 1.71rem #fff, -1rem 7rem #fff,
+    -2.11rem 0.85rem #fff, -2.15rem -2.73rem #fff, -2.11rem 1.85rem #fff,
+    -2.15rem -2.53rem #fff, -2.15rem -0.88rem #fff, -2.22rem 3.79rem #fff,
+    -2.23rem -1.74rem #fff, -2.23rem -2.74rem #fff, -2.29rem -2.94rem #fff,
+    -2.25rem -4rem #fff, -2.35rem -4rem #fff, -2.29rem -2.94rem #fff,
+    -2.39rem -0.78rem #fff, -2.39rem -1.87rem #fff, -2.46rem -2.73rem #fff,
+    -2.47rem -0.54rem #fff, -2.47rem -0.54rem #fff, -2.55rem -2.07rem #fff,
+    -2.48rem -0.21rem #fff, -2.72rem -2.69rem #fff, -2.56rem -1.11rem #fff,
+    -2.56rem -2.11rem #fff, -2.57rem 0.71rem #fff, -2.59rem 3.32rem #fff,
+    -2.61rem -4rem #fff, -2.61rem -5rem #fff, -2.65rem 0.44rem #fff,
+    -2.65rem 1.44rem #fff, -2.72rem 2.28rem #fff, -2.78rem 2.79rem #fff,
+    -2.86rem -5.35rem #fff, -2.98rem -2.69rem #fff, -2.87rem 0.84rem #fff,
+    -2.91rem 0.32rem #fff, -2.94rem 4.33rem #fff, -2rem -2rem #fff,
+    -2.98rem -3.69rem #fff, -2rem -0.29rem #fff, -2rem -1.17rem #fff,
+    -2rem 0.96rem #fff, -2rem 3.97rem #fff, -2rem 6rem #fff,
+    -3.02rem 1.96rem #fff, -3.11rem -0.15rem #fff, -3.13rem -3.44rem #fff,
+    -3.15rem -3.73rem #fff, -3.23rem -2.74rem #fff, -3.29rem -3.94rem #fff,
+    -3.39rem -2.87rem #fff, -3.39rem -1.78rem #fff, -3.46rem -2.74rem #fff,
+    -3.46rem -2.74rem #fff, -3.47rem -1.54rem #fff, -3.61rem -6rem #fff,
+    -3.48rem -1.21rem #fff, -3.56rem -3.11rem #fff, -3.59rem 2.32rem #fff,
+    -3.71rem -3.46rem #fff, -3.65rem -0.56rem #fff, -3.72rem -3.69rem #fff,
+    -3.91rem -0.68rem #fff, -3.86rem -6.35rem #fff, -3.91rem -0.68rem #fff,
+    -3.94rem 3.33rem #fff, -3.98rem -4.69rem #fff, -3rem -0.04rem #fff,
+    -3rem -3rem #fff, -3rem -0.29rem #fff, -3rem -2.17rem #fff,
+    -4rem -1.29rem #fff, -3rem 2.97rem #fff, -3rem 5rem #fff,
+    -4.02rem 0.96rem #fff, -4.13rem -4.44rem #fff, -4.29rem -4.94rem #fff,
+    -4.48rem -2.21rem #fff, -4.46rem -3.74rem #fff, -4.72rem -4.69rem #fff,
+    -4.91rem -1.68rem #fff, -4rem -2.29rem #fff, -4rem -1.04rem #fff,
+    -4rem -4rem #fff, -4rem -3.17rem #fff, -4rem 1.97rem #fff, -4rem 4rem #fff,
+    -5.48rem -3.21rem #fff, -5.72rem -5.69rem #fff, -5.91rem -2.68rem #fff,
+    -5rem -2.29rem #fff, -5rem -4.17rem #fff, -6rem -3.29rem #fff,
+    -6rem -5.17rem #fff, -0.11rem 3.85rem #fff, 0.01rem -1.22rem #fff,
+    0.02rem 1.31rem #fff, 0.11rem 2.35rem #fff, 0.14rem -2.35rem #fff,
+    0.21rem 1.63rem #fff, 0.1rem 4.38rem #fff, 0.21rem 0.63rem #fff,
+    0.22rem 2.33rem #fff, 0.41rem 6.32rem #fff, 0.43rem 3.41rem #fff,
+    0.42rem 1.41rem #fff, 0.52rem 1.77rem #fff, 0.5rem -3rem #fff,
+    0.54rem 0.27rem #fff, 0.62rem -1.59rem #fff, 0.75rem -1rem #fff,
+    0.67rem -1.43rem #fff, 0.71rem -0.94rem #fff, 0.73rem -3.17rem #fff,
+    0.74rem 0.28rem #fff, 0.83rem 1.02rem #fff, 0.85rem 2.12rem #fff,
+    1.18rem 7.15rem #fff, 0.88rem -2.32rem #fff, 0.93rem 4.05rem #fff,
+    0.95rem 4rem #fff, 1.01rem -0.22rem #fff, 1.02rem 0.73rem #fff,
+    1.14rem -1.35rem #fff, 1.21rem 1.63rem #fff, 1.23rem 4rem #fff,
+    1.21rem 2.63rem #fff, 1.22rem 3.33rem #fff, 1.42rem 2.41rem #fff,
+    1.27rem -2.04rem #fff, 1.39rem -0.17rem #fff, 1.51rem 3.49rem #fff,
+    1.58rem -1.12rem #fff, 1.5rem -2rem #fff, 1.73rem -2.17rem #fff,
+    1.61rem 0.99rem #fff, 1.62rem -0.59rem #fff, 1.76rem 2.15rem #fff,
+    1.83rem -1.07rem #fff, 1.83rem 2.02rem #fff, 1.86rem -0.37rem #fff,
+    1.88rem -1.32rem #fff, 1.93rem 5.05rem #fff, 1.95rem 5rem #fff,
+    2.02rem 1.73rem #fff, 2.05rem 0.45rem #fff, 2.05rem 1.74rem #fff,
+    2.11rem 4.35rem #fff, 2.07rem -0.54rem #fff, 2.19rem -2.14rem #fff,
+    2.21rem 2.63rem #fff, 2.22rem 4.33rem #fff, 2.23rem 5rem #fff,
+    2.27rem -1.04rem #fff, 2.2rem -4.4rem #fff, 2.32rem -0.92rem #fff,
+    2.45rem -2.64rem #fff, 2.48rem 2.17rem #fff, 2.51rem 4.49rem #fff,
+    2.52rem 0.54rem #fff, 2.52rem 3.77rem #fff, 2.54rem 0.54rem #fff,
+    2.57rem 1.48rem #fff, 2.56rem 2.48rem #fff, 2.57rem -2.89rem #fff,
+    2.58rem -0.12rem #fff, 2.61rem 1.99rem #fff, 2.61rem 2.68rem #fff,
+    2.62rem 0.41rem #fff, 2.62rem -4.28rem #fff, 2.62rem 3.41rem #fff,
+    2.63rem -0.97rem #fff, 2.73rem -1.17rem #fff, 2.83rem -0.07rem #fff,
+    2.76rem 3.15rem #fff, 2.83rem 3.02rem #fff, 3.07rem 0.46rem #fff,
+    2.85rem 4.12rem #fff, 2.86rem 0.63rem #fff, 2.93rem -1.99rem #fff,
+    2.95rem 6rem #fff, 3.01rem 0.78rem #fff, 3.02rem 2.73rem #fff,
+    3.03rem -3.69rem #fff, 3.05rem 1.45rem #fff, 3.05rem 2.74rem #fff,
+    3.19rem -1.14rem #fff, 3.21rem 0.89rem #fff, 3.21rem 3.63rem #fff,
+    3.32rem -0.08rem #fff, 3.23rem 6rem #fff, 3.27rem -0.04rem #fff,
+    3.2rem -3.4rem #fff, 3.32rem 2.38rem #fff, 3.36rem 1.8rem #fff,
+    3.48rem 3.17rem #fff, 3.45rem -1.64rem #fff, 3.45rem 0.39rem #fff,
+    3.51rem 5.49rem #fff, 3.57rem 2.48rem #fff, 3.61rem -1.09rem #fff,
+    3.5rem -0.32rem #fff, 3.61rem 3.68rem #fff, 3.69rem -1.17rem #fff,
+    3.62rem -3.28rem #fff, 3.63rem -0.06rem #fff, 3.73rem 0.83rem #fff,
+    3.76rem 2.68rem #fff, 3.76rem 4.15rem #fff, 3.83rem 0.93rem #fff,
+    3.93rem -0.99rem #fff, 3.93rem 7.05rem #fff, 4.19rem -0.14rem #fff,
+    4.03rem -2.69rem #fff, 4.05rem 2.45rem #fff, 4.22rem 6.33rem #fff,
+    4.32rem 0.92rem #fff, 4.32rem 3.38rem #fff, 4.45rem 1.39rem #fff,
+    4.36rem 2.8rem #fff, 4.57rem 3.48rem #fff, 4.58rem 1.88rem #fff,
+    4.61rem -0.09rem #fff, 4.61rem 3.99rem #fff, 4.63rem -0.06rem #fff,
+    4.61rem 4.68rem #fff, 4.69rem -0.17rem #fff, 4.83rem 1.93rem #fff,
+    4.76rem 3.68rem #fff, 4.86rem 2.63rem #fff, 4.93rem -0.99rem #fff,
+    4rem -2.61rem #fff, 4rem 0.85rem #fff, 4rem 2.22rem #fff,
+    5.05rem 4.33rem #fff, 5.27rem 1.96rem #fff, 5.32rem 1.92rem #fff,
+    5.32rem 4.38rem #fff, 5.36rem 3.8rem #fff, 5.45rem 0.36rem #fff,
+    5.61rem 5.68rem #fff, 5.45rem 2.39rem #fff, 5.62rem -1.28rem #fff,
+    5.63rem 1.94rem #fff, 5.69rem 0.83rem #fff, 5.76rem 4.68rem #fff,
+    5.93rem 1.01rem #fff, 5rem -1.61rem #fff, 5rem 1.85rem #fff,
+    5rem 3.22rem #fff, 6.03rem -0.99rem #fff, 6.05rem 4.45rem #fff,
+    6.19rem -1.14rem #fff, 6.32rem 5.38rem #fff, 6.36rem 4.8rem #fff,
+    6.61rem 1.91rem #fff, 6.57rem 5.48rem #fff, 7rem 3.85rem #fff,
+    6rem -0.61rem #fff, 6rem 2.85rem #fff, 6rem 4.22rem #fff,
+    7.45rem 4.39rem #fff, 7.69rem 2.83rem #fff, 8rem 1.39rem #fff,
+    8rem 6.22rem #fff, -8.5rem 12.2rem #fff, 13.3rem 2.5rem #fff,
+    -7.4rem 3.7rem #fff, -14.5rem 7.1rem #fff, 0.9rem -1.3rem #fff,
+    -13.6rem 7.8rem #fff, -12.4rem 8.2rem #fff, -7.1rem 14.7rem #fff,
+    1.2rem -8.9rem #fff, -13.9rem 8.3rem #fff, 8.8rem 14.3rem #fff,
+    -2.2rem -14.9rem #fff, 2.3rem -12.7rem #fff, 7.7rem 1.5rem #fff,
+    8.9rem 1.1rem #fff, -5.2rem -8.6rem #fff, -7.6rem -6.9rem #fff,
+    -11.4rem -3.4rem #fff, 1.1rem 10.4rem #fff, -2.8rem 4.6rem #fff,
+    -6.5rem -11.7rem #fff, -5.7rem -6.3rem #fff, -6.4rem 5.4rem #fff,
+    10.1rem -13.5rem #fff, -10.8rem -11.2rem #fff, -9.1rem -12.6rem #fff,
+    2.6rem -5.7rem #fff, 10.7rem -10.3rem #fff, -5.1rem -1.2rem #fff,
+    3.8rem 8.6rem #fff, 0.8rem 12.1rem #fff, 11.6rem -7.2rem #fff,
+    13.8rem -4.1rem #fff, -10.3rem -7.5rem #fff, -7.9rem 8.2rem #fff,
+    1.6rem 1.2rem #fff, 2.5rem 5.7rem #fff, 3.7rem 14.5rem #fff,
+    14.3rem 9.1rem #fff, 7.9rem 0.5rem #fff, -5.3rem 11.3rem #fff,
+    -1.5rem -14.6rem #fff, -9.6rem 12.1rem #fff, -10.5rem 1.4rem #fff,
+    8.4rem 9.4rem #fff, 12.5rem -11.8rem #fff, 4.6rem 12.1rem #fff,
+    -8.2rem 8.7rem #fff, 12.7rem 0.3rem #fff, 10.3rem 2.6rem #fff,
+    -3.6rem -2.7rem #fff, -4.7rem -1.1rem #fff, -1.6rem 8.5rem #fff,
+    -4.3rem 12.2rem #fff, -3.7rem -3.1rem #fff, -12.3rem 7.8rem #fff,
+    -12.6rem 6.9rem #fff, -1.3rem -7.5rem #fff, 7.8rem -5.2rem #fff,
+    0.7rem -2.1rem #fff, -5.9rem -14.6rem #fff, 10.1rem 6.2rem #fff,
+    -3.4rem 12.9rem #fff, -4.2rem 8.4rem #fff, -13.7rem -9.4rem #fff,
+    3.5rem -10.8rem #fff, 11.4rem -3.1rem #fff, 4.9rem 6.6rem #fff,
+    -3.1rem 13.7rem #fff, 1.8rem 7.6rem #fff, 14.2rem 14.5rem #fff;
+
   animation-name: space2;
-  animation-duration: 2s; /* faster speed */
+  animation-duration: 320s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   overflow: hidden;
@@ -139,10 +237,169 @@
 
 @keyframes space2 {
   from {
-    transform: translateY(0px);
+    transform: rotate(0deg);
   }
   to {
-    transform: translateY(20rem);
+    transform: rotate(360deg);
+  }
+}
+
+.heading::after {
+  content: " ";
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  width: 0.07rem;
+  height: 0.071rem;
+  border-radius: 1rem;
+  background: transparent;
+  background-size: 10% 10%;
+  box-shadow: -0.02rem 3.96rem #fff, -0.12rem -3.32rem #fff,
+    -0.12rem 2.41rem #fff, -0.15rem -0.53rem #fff, -0.15rem 1.12rem #fff,
+    -0.22rem 5.79rem #fff, -0.23rem -0.74rem #fff, -0.25rem -2rem #fff,
+    -0.26rem -0.72rem #fff, -0.29rem -0.94rem #fff, -0.39rem 0.13rem #fff,
+    -0.33rem -2.43rem #fff, -0.35rem -2rem #fff, -0.48rem 0.77rem #fff,
+    -0.46rem -0.73rem #fff, -0.47rem 1.46rem #fff, -0.61rem -2rem #fff,
+    -0.55rem -0.07rem #fff, -0.58rem 0.41rem #fff, -0.5rem -4rem #fff,
+    -0.61rem -3rem #fff, -0.65rem 2.44rem #fff, -0.65rem 3.44rem #fff,
+    -0.72rem -0.69rem #fff, -0.82rem 5.15rem #fff, -0.82rem 6.15rem #fff,
+    -0.86rem -3.35rem #fff, -0.87rem 2.84rem #fff, -0.89rem 1.35rem #fff,
+    -0.99rem -2.22rem #fff, -0.98rem -0.69rem #fff, -0.98rem -1.69rem #fff,
+    -0.9rem 3.38rem #fff, -1.11rem 1.85rem #fff, -1.15rem -1.73rem #fff,
+    -1.25rem -3rem #fff, -1.26rem -1.72rem #fff, -1.35rem -3rem #fff,
+    -1.29rem -1.94rem #fff, -1.39rem -0.87rem #fff, -1.46rem -0.74rem #fff,
+    -1.39rem 0.22rem #fff, -1.47rem 0.46rem #fff, -1.48rem -0.23rem #fff,
+    -1.55rem -1.07rem #fff, -1.56rem -1.11rem #fff, -1.57rem 1.71rem #fff,
+    -1.58rem -0.59rem #fff, -1.59rem 4.32rem #fff, -1.61rem -4rem #fff,
+    -1.65rem 1.44rem #fff, -1.64rem -0.78rem #fff, -1.78rem 3.79rem #fff,
+    -1.82rem 4.15rem #fff, -1.86rem -4.35rem #fff, -1.87rem 1.84rem #fff,
+    -1.89rem 0.35rem #fff, -1.91rem 1.32rem #fff, -1.98rem -2.69rem #fff,
+    -1.9rem 2.38rem #fff, -1rem -1rem #fff, -1rem 1.71rem #fff, -1rem 7rem #fff,
+    -2.11rem 0.85rem #fff, -2.15rem -2.73rem #fff, -2.11rem 1.85rem #fff,
+    -2.15rem -2.53rem #fff, -2.15rem -0.88rem #fff, -2.22rem 3.79rem #fff,
+    -2.23rem -1.74rem #fff, -2.23rem -2.74rem #fff, -2.29rem -2.94rem #fff,
+    -2.25rem -4rem #fff, -2.35rem -4rem #fff, -2.29rem -2.94rem #fff,
+    -2.39rem -0.78rem #fff, -2.39rem -1.87rem #fff, -2.46rem -2.73rem #fff,
+    -2.47rem -0.54rem #fff, -2.47rem -0.54rem #fff, -2.55rem -2.07rem #fff,
+    -2.48rem -0.21rem #fff, -2.72rem -2.69rem #fff, -2.56rem -1.11rem #fff,
+    -2.56rem -2.11rem #fff, -2.57rem 0.71rem #fff, -2.59rem 3.32rem #fff,
+    -2.61rem -4rem #fff, -2.61rem -5rem #fff, -2.65rem 0.44rem #fff,
+    -2.65rem 1.44rem #fff, -2.72rem 2.28rem #fff, -2.78rem 2.79rem #fff,
+    -2.86rem -5.35rem #fff, -2.98rem -2.69rem #fff, -2.87rem 0.84rem #fff,
+    -2.91rem 0.32rem #fff, -2.94rem 4.33rem #fff, -2rem -2rem #fff,
+    -2.98rem -3.69rem #fff, -2rem -0.29rem #fff, -2rem -1.17rem #fff,
+    -2rem 0.96rem #fff, -2rem 3.97rem #fff, -2rem 6rem #fff,
+    -3.02rem 1.96rem #fff, -3.11rem -0.15rem #fff, -3.13rem -3.44rem #fff,
+    -3.15rem -3.73rem #fff, -3.23rem -2.74rem #fff, -3.29rem -3.94rem #fff,
+    -3.39rem -2.87rem #fff, -3.39rem -1.78rem #fff, -3.46rem -2.74rem #fff,
+    -3.46rem -2.74rem #fff, -3.47rem -1.54rem #fff, -3.61rem -6rem #fff,
+    -3.48rem -1.21rem #fff, -3.56rem -3.11rem #fff, -3.59rem 2.32rem #fff,
+    -3.71rem -3.46rem #fff, -3.65rem -0.56rem #fff, -3.72rem -3.69rem #fff,
+    -3.91rem -0.68rem #fff, -3.86rem -6.35rem #fff, -3.91rem -0.68rem #fff,
+    -3.94rem 3.33rem #fff, -3.98rem -4.69rem #fff, -3rem -0.04rem #fff,
+    -3rem -3rem #fff, -3rem -0.29rem #fff, -3rem -2.17rem #fff,
+    -4rem -1.29rem #fff, -3rem 2.97rem #fff, -3rem 5rem #fff,
+    -4.02rem 0.96rem #fff, -4.13rem -4.44rem #fff, -4.29rem -4.94rem #fff,
+    -4.48rem -2.21rem #fff, -4.46rem -3.74rem #fff, -4.72rem -4.69rem #fff,
+    -4.91rem -1.68rem #fff, -4rem -2.29rem #fff, -4rem -1.04rem #fff,
+    -4rem -4rem #fff, -4rem -3.17rem #fff, -4rem 1.97rem #fff, -4rem 4rem #fff,
+    -5.48rem -3.21rem #fff, -5.72rem -5.69rem #fff, -5.91rem -2.68rem #fff,
+    -5rem -2.29rem #fff, -5rem -4.17rem #fff, -6rem -3.29rem #fff,
+    -6rem -5.17rem #fff, -0.11rem 3.85rem #fff, 0.01rem -1.22rem #fff,
+    0.02rem 1.31rem #fff, 0.11rem 2.35rem #fff, 0.14rem -2.35rem #fff,
+    0.21rem 1.63rem #fff, 0.1rem 4.38rem #fff, 0.21rem 0.63rem #fff,
+    0.22rem 2.33rem #fff, 0.41rem 6.32rem #fff, 0.43rem 3.41rem #fff,
+    0.42rem 1.41rem #fff, 0.52rem 1.77rem #fff, 0.5rem -3rem #fff,
+    0.54rem 0.27rem #fff, 0.62rem -1.59rem #fff, 0.75rem -1rem #fff,
+    0.67rem -1.43rem #fff, 0.71rem -0.94rem #fff, 0.73rem -3.17rem #fff,
+    0.74rem 0.28rem #fff, 0.83rem 1.02rem #fff, 0.85rem 2.12rem #fff,
+    1.18rem 7.15rem #fff, 0.88rem -2.32rem #fff, 0.93rem 4.05rem #fff,
+    0.95rem 4rem #fff, 1.01rem -0.22rem #fff, 1.02rem 0.73rem #fff,
+    1.14rem -1.35rem #fff, 1.21rem 1.63rem #fff, 1.23rem 4rem #fff,
+    1.21rem 2.63rem #fff, 1.22rem 3.33rem #fff, 1.42rem 2.41rem #fff,
+    1.27rem -2.04rem #fff, 1.39rem -0.17rem #fff, 1.51rem 3.49rem #fff,
+    1.58rem -1.12rem #fff, 1.5rem -2rem #fff, 1.73rem -2.17rem #fff,
+    1.61rem 0.99rem #fff, 1.62rem -0.59rem #fff, 1.76rem 2.15rem #fff,
+    1.83rem -1.07rem #fff, 1.83rem 2.02rem #fff, 1.86rem -0.37rem #fff,
+    1.88rem -1.32rem #fff, 1.93rem 5.05rem #fff, 1.95rem 5rem #fff,
+    2.02rem 1.73rem #fff, 2.05rem 0.45rem #fff, 2.05rem 1.74rem #fff,
+    2.11rem 4.35rem #fff, 2.07rem -0.54rem #fff, 2.19rem -2.14rem #fff,
+    2.21rem 2.63rem #fff, 2.22rem 4.33rem #fff, 2.23rem 5rem #fff,
+    2.27rem -1.04rem #fff, 2.2rem -4.4rem #fff, 2.32rem -0.92rem #fff,
+    2.45rem -2.64rem #fff, 2.48rem 2.17rem #fff, 2.51rem 4.49rem #fff,
+    2.52rem 0.54rem #fff, 2.52rem 3.77rem #fff, 2.54rem 0.54rem #fff,
+    2.57rem 1.48rem #fff, 2.56rem 2.48rem #fff, 2.57rem -2.89rem #fff,
+    2.58rem -0.12rem #fff, 2.61rem 1.99rem #fff, 2.61rem 2.68rem #fff,
+    2.62rem 0.41rem #fff, 2.62rem -4.28rem #fff, 2.62rem 3.41rem #fff,
+    2.63rem -0.97rem #fff, 2.73rem -1.17rem #fff, 2.83rem -0.07rem #fff,
+    2.76rem 3.15rem #fff, 2.83rem 3.02rem #fff, 3.07rem 0.46rem #fff,
+    2.85rem 4.12rem #fff, 2.86rem 0.63rem #fff, 2.93rem -1.99rem #fff,
+    2.95rem 6rem #fff, 3.01rem 0.78rem #fff, 3.02rem 2.73rem #fff,
+    3.03rem -3.69rem #fff, 3.05rem 1.45rem #fff, 3.05rem 2.74rem #fff,
+    3.19rem -1.14rem #fff, 3.21rem 0.89rem #fff, 3.21rem 3.63rem #fff,
+    3.32rem -0.08rem #fff, 3.23rem 6rem #fff, 3.27rem -0.04rem #fff,
+    3.2rem -3.4rem #fff, 3.32rem 2.38rem #fff, 3.36rem 1.8rem #fff,
+    3.48rem 3.17rem #fff, 3.45rem -1.64rem #fff, 3.45rem 0.39rem #fff,
+    3.51rem 5.49rem #fff, 3.57rem 2.48rem #fff, 3.61rem -1.09rem #fff,
+    3.5rem -0.32rem #fff, 3.61rem 3.68rem #fff, 3.69rem -1.17rem #fff,
+    3.62rem -3.28rem #fff, 3.63rem -0.06rem #fff, 3.73rem 0.83rem #fff,
+    3.76rem 2.68rem #fff, 3.76rem 4.15rem #fff, 3.83rem 0.93rem #fff,
+    3.93rem -0.99rem #fff, 3.93rem 7.05rem #fff, 4.19rem -0.14rem #fff,
+    4.03rem -2.69rem #fff, 4.05rem 2.45rem #fff, 4.22rem 6.33rem #fff,
+    4.32rem 0.92rem #fff, 4.32rem 3.38rem #fff, 4.45rem 1.39rem #fff,
+    4.36rem 2.8rem #fff, 4.57rem 3.48rem #fff, 4.58rem 1.88rem #fff,
+    4.61rem -0.09rem #fff, 4.61rem 3.99rem #fff, 4.63rem -0.06rem #fff,
+    4.61rem 4.68rem #fff, 4.69rem -0.17rem #fff, 4.83rem 1.93rem #fff,
+    4.76rem 3.68rem #fff, 4.86rem 2.63rem #fff, 4.93rem -0.99rem #fff,
+    4rem -2.61rem #fff, 4rem 0.85rem #fff, 4rem 2.22rem #fff,
+    5.05rem 4.33rem #fff, 5.27rem 1.96rem #fff, 5.32rem 1.92rem #fff,
+    5.32rem 4.38rem #fff, 5.36rem 3.8rem #fff, 5.45rem 0.36rem #fff,
+    5.61rem 5.68rem #fff, 5.45rem 2.39rem #fff, 5.62rem -1.28rem #fff,
+    5.63rem 1.94rem #fff, 5.69rem 0.83rem #fff, 5.76rem 4.68rem #fff,
+    5.93rem 1.01rem #fff, 5rem -1.61rem #fff, 5rem 1.85rem #fff,
+    5rem 3.22rem #fff, 6.03rem -0.99rem #fff, 6.05rem 4.45rem #fff,
+    6.19rem -1.14rem #fff, 6.32rem 5.38rem #fff, 6.36rem 4.8rem #fff,
+    6.61rem 1.91rem #fff, 6.57rem 5.48rem #fff, 7rem 3.85rem #fff,
+    6rem -0.61rem #fff, 6rem 2.85rem #fff, 6rem 4.22rem #fff,
+    7.45rem 4.39rem #fff, 7.69rem 2.83rem #fff, 8rem 1.39rem #fff,
+    8rem 6.22rem #fff, -8.5rem 12.2rem #fff, 13.3rem 2.5rem #fff,
+    -7.4rem 3.7rem #fff, -14.5rem 7.1rem #fff, 0.9rem -1.3rem #fff,
+    -13.6rem 7.8rem #fff, -12.4rem 8.2rem #fff, -7.1rem 14.7rem #fff,
+    1.2rem -8.9rem #fff, -13.9rem 8.3rem #fff, 8.8rem 14.3rem #fff,
+    -2.2rem -14.9rem #fff, 2.3rem -12.7rem #fff, 7.7rem 1.5rem #fff,
+    8.9rem 1.1rem #fff, -5.2rem -8.6rem #fff, -7.6rem -6.9rem #fff,
+    -11.4rem -3.4rem #fff, 1.1rem 10.4rem #fff, -2.8rem 4.6rem #fff,
+    -6.5rem -11.7rem #fff, -5.7rem -6.3rem #fff, -6.4rem 5.4rem #fff,
+    10.1rem -13.5rem #fff, -10.8rem -11.2rem #fff, -9.1rem -12.6rem #fff,
+    2.6rem -5.7rem #fff, 10.7rem -10.3rem #fff, -5.1rem -1.2rem #fff,
+    3.8rem 8.6rem #fff, 0.8rem 12.1rem #fff, 11.6rem -7.2rem #fff,
+    13.8rem -4.1rem #fff, -10.3rem -7.5rem #fff, -7.9rem 8.2rem #fff,
+    1.6rem 1.2rem #fff, 2.5rem 5.7rem #fff, 3.7rem 14.5rem #fff,
+    14.3rem 9.1rem #fff, 7.9rem 0.5rem #fff, -5.3rem 11.3rem #fff,
+    -1.5rem -14.6rem #fff, -9.6rem 12.1rem #fff, -10.5rem 1.4rem #fff,
+    8.4rem 9.4rem #fff, 12.5rem -11.8rem #fff, 4.6rem 12.1rem #fff,
+    -8.2rem 8.7rem #fff, 12.7rem 0.3rem #fff, 10.3rem 2.6rem #fff,
+    -3.6rem -2.7rem #fff, -4.7rem -1.1rem #fff, -1.6rem 8.5rem #fff,
+    -4.3rem 12.2rem #fff, -3.7rem -3.1rem #fff, -12.3rem 7.8rem #fff,
+    -12.6rem 6.9rem #fff, -1.3rem -7.5rem #fff, 7.8rem -5.2rem #fff,
+    0.7rem -2.1rem #fff, -5.9rem -14.6rem #fff, 10.1rem 6.2rem #fff,
+    -3.4rem 12.9rem #fff, -4.2rem 8.4rem #fff, -13.7rem -9.4rem #fff,
+    3.5rem -10.8rem #fff, 11.4rem -3.1rem #fff, 4.9rem 6.6rem #fff,
+    -3.1rem 13.7rem #fff, 1.8rem 7.6rem #fff, 14.2rem 14.5rem #fff;
+
+  animation-name: space3;
+  animation-duration: 320s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  overflow: hidden;
+}
+
+@keyframes space3 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
