@@ -746,18 +746,21 @@
   /* Colors - Stars */
   --color-stars-a: hsl(
     calc(var(--base-hue) + (var(--distance) * 1)),
-    100%,
-    90%
+    70%,
+    60%,
+    100%
   );
   --color-stars-b: hsl(
     calc(var(--base-hue) + (var(--distance) * 2)),
-    100%,
-    90%
+    50%,
+    80%,
+    60%
   );
   --color-stars-c: hsl(
     calc(var(--base-hue) + (var(--distance) * 3)),
-    100%,
-    90%
+    10%,
+    80%,
+    20%
   );
 
   --bg-space: radial-gradient(
@@ -772,10 +775,12 @@
   align-items: center;
   background-image: var(--bg-space);
   background-size: 200% 200%;
-  box-shadow: var(--color-a) 0px 54px 55px, var(--color-dark) 0px -12px 30px,
-    var(--color-c) 0px 4px 6px, var(--color-d) 0px 12px 13px,
-    var(--color-b) 0px -3px 5px;
-  padding: 5rem 1.5rem;
+  box-shadow: var(--color-a) 0 3.4rem 3.4rem, var(--color-dark) 0 -0.8rem 1.9rem,
+    var(--color-c) 0 0.3rem 0.4rem, var(--color-d) 0 0.8rem 0.8rem,
+    var(--color-b) 0 -0.2rem 0.3rem;
+  height: 13.25rem;
+  width: 9.75rem;
+  padding: 1.5rem;
   border-radius: 0.75rem;
   border: 0.1rem solid hsl(var(--base-hue), 100%, 50%);
   animation: bg-gradient 8s ease infinite;
@@ -783,6 +788,7 @@
   overflow: hidden;
 }
 
+/* Galaxy Stars - Smaller, Rotating */
 .card::after {
   content: " ";
   position: absolute;
@@ -801,13 +807,33 @@
   overflow: hidden;
 }
 
+/* Galaxy Stars - Larger, Rotating */
 .card span::before {
+  content: " ";
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  width: 0.055rem;
+  height: 0.055rem;
+  transform: rotate(45deg);
+  background: transparent;
+  background-size: 10% 10%;
+  box-shadow: var(--stars-2);
+  animation-name: space2;
+  animation-duration: 320s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  overflow: hidden;
+}
+
+/* Galaxy Stars - Flickering, Non-Rotating */
+.heading::after {
   content: " ";
   position: absolute;
   top: 100%;
   left: 50%;
-  width: 0.05rem;
-  height: 0.05rem;
+  width: 0.06rem;
+  height: 0.06rem;
   transform: rotate(45deg);
   background: transparent;
   background-size: 10% 10%;
@@ -829,24 +855,6 @@
 .heading span {
   color: var(--color-bright);
   font-weight: 700;
-}
-
-.heading::after {
-  content: " ";
-  position: absolute;
-  top: 80%;
-  left: 30%;
-  width: 0.07rem;
-  height: 0.07rem;
-  border-radius: 1rem;
-  background: transparent;
-  background-size: 10% 10%;
-  box-shadow: var(--stars-2);
-  animation-name: space2;
-  animation-duration: 320s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  overflow: hidden;
 }
 
 .item--create svg {
