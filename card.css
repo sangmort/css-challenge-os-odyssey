@@ -785,6 +785,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-image: var(--bg-space);
   background-size: 300% 210%;
   box-shadow: var(--color-a) 0 3.4em 3.4em, var(--color-dark) 0 -0.8em 1.9em,
@@ -857,45 +858,74 @@
   overflow: hidden;
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem;
+}
+
 /* Header Text */
 .heading {
-  font-size: 1em;
-  letter-spacing: 0.05em;
+  font-size: 1.25rem;
+  letter-spacing: 0.05rem;
   text-align: center;
   text-transform: uppercase;
-  color: var(--color-a);
+  color: var(--color-bright);
+  line-height: 2.5rem;
   z-index: 1;
-  margin-bottom: 0.5rem;
-  -webkit-text-stroke-width: 0.05rem;
-  -webkit-text-stroke-color: var(--color-bright);
+  margin: 0.5rem;
+  text-shadow: 2px 3px 5px var(--color-dark);
 }
 
 .heading span {
+  display: block;
   text-align: justify;
-  font-size: 3rem;
-  color: var(--color-c);
-  font-weight: 700;
-
-  background: -webkit-linear-gradient(var(--color-a), var(--color-d));
+  font-size: 3.5rem;
+  color: var(--color-a);
+  background-image: linear-gradient(
+    45deg,
+    var(--color-a),
+    var(--color-b),
+    var(--color-c),
+    var(--color-d)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 0.05rem;
-  -webkit-text-stroke-color: var(--color-bright);
+  font-weight: 700;
   animation-name: galaxy;
-  animation-duration: 12s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  text-shadow: none;
   overflow: hidden;
 }
 
-.item {
-  font-size: 1.75em;
+.item,
+.item svg {
+  display: flex;
+  align-items: center;
+  font-size: 2.5rem;
   text-transform: uppercase;
-  margin-bottom: 0.75em;
+  margin: 0.25rem;
+  text-shadow: 2px 3px 5px var(--color-dark);
+}
+
+.item svg {
+  height: 2.5rem;
+  width: 2.5rem;
+  filter: drop-shadow(3px 5px 2px var(--color-dark));
 }
 
 .item--create svg {
   color: var(--color-a);
+  z-index: 1;
+}
+
+.item--create svg:hover {
+  color: var(--color-a);
+  animation: space2 1s linear infinite;
+  cursor: pointer;
   z-index: 1;
 }
 
@@ -909,6 +939,13 @@
   z-index: 1;
 }
 
+.item--post svg:hover {
+  color: var(--color-b);
+  animation: space2 1s linear infinite;
+  cursor: pointer;
+  z-index: 1;
+}
+
 .item--post {
   color: var(--color-b);
   z-index: 1;
@@ -919,18 +956,26 @@
   z-index: 1;
 }
 
+.item--inspire svg:hover {
+  color: var(--color-c);
+  animation: space2 1s linear infinite;
+  cursor: pointer;
+  z-index: 1;
+}
+
 .item--inspire {
   color: var(--color-c);
 }
 
 /* Button */
 button {
+  display: flex;
+  margin: 1rem;
   position: relative;
-  font-size: 1em;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: bold;
   text-transform: uppercase;
-  text-decoration: none;
-  padding: 1em 2.5em;
+  padding: 1rem 2rem;
   display: inline-block;
   border-radius: 1.75rem;
   transition: all 0.2s;
@@ -938,18 +983,27 @@ button {
   font-family: inherit;
   font-weight: 500;
   color: var(--color-dark);
-  background-color: var(--color-a);
+  background-image: linear-gradient(
+    45deg,
+    var(--color-a),
+    var(--color-b),
+    var(--color-c),
+    var(--color-d)
+  );
+  box-shadow: 0 1rem 1rem var(--color-dark);
   z-index: 1;
 }
 
 button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px var(--color-a);
+  cursor: pointer;
+  color: var(--color-bright);
+  box-shadow: 0 10px 20px var(--color-a-dk);
 }
 
 button:active {
   transform: translateY(-1px);
-  box-shadow: 0 0.1rem 0.25rem var(--color-a);
+  box-shadow: 0 1rem 1rem var(--color-dark);
 }
 
 button::after {
@@ -973,6 +1027,7 @@ button:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
 }
+
 /*animations*/
 
 /* Stars */
@@ -1012,12 +1067,12 @@ button:hover::after {
   0%,
   50%,
   100% {
-    opacity: 1;
+    background-position: 0% 100%;
   }
   10%,
   25%,
   75% {
-    opacity: 0.75;
+    background-position: 100% 0%;
   }
 }
 
