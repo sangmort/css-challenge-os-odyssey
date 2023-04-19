@@ -795,7 +795,7 @@
   padding: 1.75em;
   border-radius: 0.75em;
   border: 0.05em solid var(--color-c);
-  animation: bg-gradient 3s linear infinite;
+  animation: bg-gradient 15s linear infinite;
   position: relative;
   overflow: hidden;
 }
